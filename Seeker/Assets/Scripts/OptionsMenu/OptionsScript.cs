@@ -10,7 +10,7 @@ public class OptionsScript : MonoBehaviour
  
  
      private string clicked = "";
-     private Rect WindowRect = new Rect((Screen.width / 2) - 100, Screen.height / 2, 200, 200);
+     private Rect WindowRect = new Rect((Screen.width / 2) - 250, Screen.height / 3, 500, 200);
      private float volume = 1.0f;
  
      private void Start()
@@ -22,8 +22,6 @@ public class OptionsScript : MonoBehaviour
      {
          if (background != null)
              GUI.DrawTexture(new Rect(0,0,Screen.width , Screen.height),background);
-         if (LOGO != null && clicked != "about")
-             GUI.DrawTexture(new Rect((Screen.width / 2) - 100, 30, 200, 200), LOGO);
  
          GUI.skin = guiSkin;
          if (clicked == "") { 
@@ -75,12 +73,12 @@ public class OptionsScript : MonoBehaviour
     private void audioMenuFunc(int id)
     {
         GUILayout.Box("Volume");
-        volume = GUILayout.HorizontalSlider(volume, 0.0f, 1.0f);
-        AudioListener.volume = volume;
-        if (GUILayout.Button("Back"))
-        {
-            clicked = "";
-        }
+         volume = GUILayout.HorizontalSlider(volume ,0.0f,1.0f);
+         AudioListener.volume = volume;
+         if (GUILayout.Button("Back"))
+         {
+             clicked = "";
+         }
     }
 
     private void graphicsMenuFunc(int id)
