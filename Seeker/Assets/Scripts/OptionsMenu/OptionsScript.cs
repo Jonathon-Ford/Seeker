@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OptionsScript : MonoBehaviour
 {
@@ -64,8 +65,8 @@ public class OptionsScript : MonoBehaviour
          }
          if (GUILayout.Button("Back to Main Menu"))
          {
-
-         }
+            SceneManager.LoadScene("MainMenu");
+        }
          if (DragWindow)
              GUI.DragWindow(new Rect(0, 0, Screen.width, Screen.height));
      }
