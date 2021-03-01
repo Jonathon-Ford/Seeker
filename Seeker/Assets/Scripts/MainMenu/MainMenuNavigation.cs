@@ -7,7 +7,7 @@ public class MainMenuNavigation : MonoBehaviour
 {
     public void CreateGame()
     {
-        SceneManager.LoadScene("CreateGame");
+        SceneManager.LoadScene("TestMap");
     }
 
     public void GoToOptions()
