@@ -9,12 +9,14 @@ public class LevelCamera : MonoBehaviour
     private Func<Vector3> GetCameraFollowPosition;
     private Func<float> GetCameraZoom;
 
+    //This setup function allows for the camera to be set to another character by passing a new follow positon
     public void Setup(Func<Vector3> GetCameraFollowPosition, Func<float> GetCameraZoom)
     {
         this.GetCameraFollowPosition = GetCameraFollowPosition;
         this.GetCameraZoom = GetCameraZoom;
     }
 
+    //Sets up thisCamera to point at itself
     private void Start()
     {
         thisCamera = transform.GetComponent<Camera>();
@@ -36,8 +38,9 @@ public class LevelCamera : MonoBehaviour
     private void Zoom()
     {
         float cameraZoom = GetCameraZoom();
+        float cameraZoomDiff = cameraZoom - thisCamera.orthographicSize;
 
-        thisCamera.orthographicSize = cameraZoom;
+        thisCamera.orthographicSize += cameraZoomDiff * .002f;
     }
 
 }
