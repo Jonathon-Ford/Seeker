@@ -32,6 +32,7 @@ public class LevelCamera : MonoBehaviour
     {
         Vector3 cameraFollowPosition = GetCameraFollowPosition();
         cameraFollowPosition.z = transform.position.z; //Makes it so the z position of the camera does not become the z psition of the focus
+        // transform.position = Vector3.Lerp(transform.position, cameraFollowPosition, Time.deltaTime);  smoth transition
         transform.position = cameraFollowPosition;
     }
 
