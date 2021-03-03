@@ -20,7 +20,7 @@ public class SpaceMan : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, movePoint.position, moveSpeed = 0.003f);
 
-        if (Vector3.Distance(transform.position, movePoint.position) <= .1f && !Input.GetKey(KeyCode.Tab))//Move only if in a square and tab is not pressed
+        if (Vector3.Distance(transform.position, movePoint.position) <= .1f && !Input.GetKey(KeyCode.LeftShift))//Move only if in a square and tab is not pressed
         {
 
             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) == 1f)
