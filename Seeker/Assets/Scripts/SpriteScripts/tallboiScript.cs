@@ -4,18 +4,47 @@ using UnityEngine;
 
 public class tallboiScript : MonoBehaviour
 {
-    float speed = 1f;
+    public float moveSpeed = 5f;
+    //public Transform movePoint;
+    //public Animator animator;
+
+    public LayerMask isNoWalk;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //movePoint.parent = null;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 move = new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0);
+        if (Input.anyKeyDown)
+        {
+            GameObject target = findClosestEnemy();
+            transform.position = Vector3.MoveTowards(transform.position, target.transform.position, moveSpeed = 1f);
+        }
+    }
 
-        transform.position += move * speed * Time.deltaTime;
+    GameObject findClosestEnemy()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Squaddie");
+        GameObject closestEnemy = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+
+        foreach (GameObject enemy in enemies)
+        {
+            Vector3 difference = enemy.transform.position - position;
+            float currentDistance = difference.sqrMagnitude;
+
+            if (currentDistance < distance)
+            {
+                closestEnemy = enemy;
+                distance = currentDistance;
+            }
+        }
+
+        return closestEnemy;
     }
 }
