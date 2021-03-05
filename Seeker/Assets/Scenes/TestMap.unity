@@ -622,6 +622,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelCam: {fileID: 1251040536}
   partyLead: {fileID: 1905175465}
+  camIsFixed: 1
 --- !u!1 &1343634441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,6 +1138,7 @@ GameObject:
   - component: {fileID: 1905175465}
   - component: {fileID: 1905175464}
   - component: {fileID: 1905175463}
+  - component: {fileID: 1905175466}
   m_Layer: 0
   m_Name: SpaceMan
   m_TagString: Untagged
@@ -1158,6 +1160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   movePoint: {fileID: 1199558769}
+  animator: {fileID: 1905175466}
   isNoWalk:
     serializedVersion: 2
     m_Bits: 64
@@ -1227,6 +1230,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1905175466
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905175462}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7bb35b8f08b9c53438964b3e5e851e13, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2121197003
 GameObject:
   m_ObjectHideFlags: 0
