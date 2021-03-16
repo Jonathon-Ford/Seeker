@@ -39,6 +39,10 @@ public class GameHandler : MonoBehaviour
         }
     }
 
+    public void CreateMap(){
+
+    }
+
     public void ZoomCamera(float amount){
         cameraZoom -= amount;
         if (cameraZoom < 2f) cameraZoom = 2f;
