@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class GameHandler : MonoBehaviour
 {
@@ -12,36 +13,37 @@ public class GameHandler : MonoBehaviour
     public bool camIsFixed = true;
 
     // Start is called before the first frame update
-    void Start(){
+    void Start() {
         levelCam.Setup(() => partyLead.position, () => cameraZoom);
     }
 
     // Update is called once per frame
-    void Update(){
+    void Update() {
         ZoomCamera(Input.GetAxis("Mouse ScrollWheel"));
 
         if (Input.GetKeyDown(KeyCode.Tab)) ToggleCamera();
 
-        if (!camIsFixed){
+        if (!camIsFixed) {
             float distanceFromEdge = 40;
-            if (Input.mousePosition.x > Screen.width - distanceFromEdge){
+            if (Input.mousePosition.x > Screen.width - distanceFromEdge) {
                 levelCamPosition.x += .008f;
             }
-            if (Input.mousePosition.x < distanceFromEdge){
+            if (Input.mousePosition.x < distanceFromEdge) {
                 levelCamPosition.x -= .008f;
             }
-            if (Input.mousePosition.y > Screen.height - distanceFromEdge){
+            if (Input.mousePosition.y > Screen.height - distanceFromEdge) {
                 levelCamPosition.y += .008f;
             }
-            if (Input.mousePosition.y < distanceFromEdge){
+            if (Input.mousePosition.y < distanceFromEdge) {
                 levelCamPosition.y -= .008f;
             }
         }
     }
 
-    public void CreateMap(){
+    public void CreateMap() {
 
     }
+
 
     public void ZoomCamera(float amount){
         cameraZoom -= amount;
