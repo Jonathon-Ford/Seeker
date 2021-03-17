@@ -31,16 +31,16 @@ public class LevelGenerator : MonoBehaviour
 
         int roomArea = 0;
         //Generate randomly sized rooms within a range
-        while (roomArea < .66 * totalArea){
+        while (roomArea < (.66 * totalArea) ){
 
-            int roomWidth = Random.Range(3, tilemapSize.x);
-            int roomHeight = Random.Range(3, tilemapSize.z);
+            int roomWidth = (int) .5 * Random.Range(6, totalWidth);
+            int roomHeight = (int) .5 * Random.Range(6, totalHeight);
 
             roomArea += roomWidth * roomHeight;
 
             //Generate a random starting postion to add the room on the map
-            int roomStartX = Random.Range(1, (tilemapSize.x - (roomWidth + 1)) );
-            int roomStartY = Random.Range(1, (tilemapSize.x - (roomHeight + 1)) );
+            int roomStartX = Random.Range(1, (totalWidth - (roomWidth + 1)) );
+            int roomStartY = Random.Range(1, (totalHeight - (roomHeight + 1)) );
 
             int x = roomStartX;
             int y = roomStartY;
