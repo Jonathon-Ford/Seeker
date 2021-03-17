@@ -7,21 +7,55 @@ using UnityEditor;
 public class LevelGenerator : MonoBehaviour
 {
 
-    private Vector3Int tilemapSize;
-    private Tilemap fluidLevel;
-    private Tile fluidTile;
-    private Tilemap groundLevel;
-    private Tile groundTile;
-    private Tilemap wallLevel;
-    private Tile wallTile;
+    public Vector3Int tilemapSize;
+    public Tilemap fluidLevel;
+    public RuleTile fluidTile;
+    public Tilemap groundLevel;
+    public RuleTile groundTile;
+    public Tilemap wallLevel;
+    public RuleTile wallTile;
 
-    int width;
-    int height;
+    private int totalWidth;
+    private int totalHeight;
+    private int totalArea;
+
+    public void Start(){
+        generateLevel();
+    }
 
     public void generateLevel(){
 
+        totalWidth = tilemapSize.x;
+        totalHeight = tilemapSize.y;
+        totalArea = totalWidth * totalHeight;
 
+        int roomArea = 0;
+        //Generate randomly sized rooms within a range
+        while (roomArea < .66 * totalArea){
 
+            int roomWidth = Random.Range(3, tilemapSize.x);
+            int roomHeight = Random.Range(3, tilemapSize.z);
+
+            roomArea += roomWidth * roomHeight;
+
+            //Generate a random starting postion to add the room on the map
+            int roomStartX = Random.Range(1, (tilemapSize.x - (roomWidth + 1)) );
+            int roomStartY = Random.Range(1, (tilemapSize.x - (roomHeight + 1)) );
+
+            int x = roomStartX;
+            int y = roomStartY;
+            for(int i = 0; i < roomWidth; i++){
+
+                for (int j = 0; j <= roomHeight; j++){
+
+                    groundLevel.SetTile(new Vector3Int(x, y, 0), groundTile);
+                    y++;
+                }
+                x++;
+                y = roomStartY;
+             }
+
+        }
     }
 
     public void clearMap(){
