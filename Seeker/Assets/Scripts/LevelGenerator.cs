@@ -31,10 +31,10 @@ public class LevelGenerator : MonoBehaviour
 
         int roomArea = 0;
         //Generate randomly sized rooms within a range
-        while (roomArea < (.66 * totalArea) ){
+        while (roomArea <  totalArea/2 ){
 
-            int roomWidth = Random.Range(6, totalWidth)/ 2;
-            int roomHeight = Random.Range(6, totalHeight)/ 2;
+            int roomWidth = Random.Range(12, totalWidth)/ 4;
+            int roomHeight = Random.Range(12, totalHeight)/ 4;
 
             roomArea += roomWidth * roomHeight;
 
