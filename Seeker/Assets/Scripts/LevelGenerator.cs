@@ -30,6 +30,38 @@ public class LevelGenerator : MonoBehaviour
         totalArea = totalWidth * totalHeight;
 
         int roomArea = 0;
+
+        //Generate randomly sized fluid within a range
+        while (roomArea < totalArea / 4)
+        {
+
+            int roomWidth = Random.Range(8, totalWidth / 8);
+            int roomHeight = Random.Range(8, totalHeight / 8);
+
+            roomArea += roomWidth * roomHeight;
+
+            int roomStartX = Random.Range(1, (totalWidth - (roomWidth + 1)));
+            int roomStartY = Random.Range(1, (totalHeight - (roomHeight + 1)));
+
+            int x = roomStartX;
+            int y = roomStartY;
+            for (int i = 0; i < roomWidth; i++)
+            {
+
+                for (int j = 0; j <= roomHeight; j++)
+                {
+
+                    fluidLevel.SetTile(new Vector3Int(x, y, 0), fluidTile);
+                    y++;
+
+                }
+                x++;
+                y = roomStartY;
+            }
+        }
+
+        roomArea = 0;
+
         //Generate randomly sized rooms within a range
         while (roomArea <  totalArea/2 ){
 
@@ -48,14 +80,30 @@ public class LevelGenerator : MonoBehaviour
 
                 for (int j = 0; j <= roomHeight; j++){
 
-                    groundLevel.SetTile(new Vector3Int(x, y, 0), groundTile);
-                    y++;
+                    if (!fluidLevel.HasTile(new Vector3Int(x, y, 0))) {
+                        groundLevel.SetTile(new Vector3Int(x, y, 0), groundTile);
+                        y++;
+                    }
                 }
                 x++;
                 y = roomStartY;
              }
 
         }
+       
+        for(int i = 0; i < totalWidth; i++){
+
+            for(int j = 0; j < totalHeight; j++){
+
+                if(!fluidLevel.HasTile(new Vector3Int(i, j, 0)) && !groundLevel.HasTile(new Vector3Int(i, j, 0)))
+                {
+                    wallLevel.SetTile(new Vector3Int(i, j, 0), wallTile);
+                }
+
+            }
+
+        }
+
     }
 
     public void clearMap(){
