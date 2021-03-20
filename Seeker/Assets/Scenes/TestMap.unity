@@ -706,6 +706,18 @@ MonoBehaviour:
   levelCam: {fileID: 1251040536}
   partyLead: {fileID: 1905175465}
   camIsFixed: 1
+  moveSpeed: 5
+  movePoint: {fileID: 0}
+  animator: {fileID: 0}
+  isNoWalk:
+    serializedVersion: 2
+    m_Bits: 0
+  whoseTurn: player
+  party: []
+  partyIndex: 0
+  APRemaining: 1
+  APTotal: 1
+  activeAction: 
 --- !u!1 &1343634441
 GameObject:
   m_ObjectHideFlags: 0
@@ -1128,7 +1140,7 @@ GameObject:
   - component: {fileID: 1466773483}
   m_Layer: 0
   m_Name: tallboi
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1249,9 +1261,9 @@ MonoBehaviour:
   moveSpeed: 5
   movePoint: {fileID: 1199558769}
   animator: {fileID: 1905175466}
-  isNoWalk:
-    serializedVersion: 2
-    m_Bits: 64
+  APMod: 1
+  APTotal: 1
+  characterName: Jeff
 --- !u!212 &1905175464
 SpriteRenderer:
   m_ObjectHideFlags: 0
